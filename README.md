@@ -9,11 +9,18 @@
    filter(): Creates a new array with elements that pass a condition.
 
 3. What are arrow functions in ES6?
-   Ans:- Arrow functions in ES6 are using: - They don’t have their own this (inherit from parent scope). - Cannot be used as constructors. - Syntax is concise.
+   Ans:- Arrow functions in ES6 are using:
+
+   - They don’t have their own this (inherit from parent scope).
+   - Cannot be used as constructors.
+   - Syntax is concise.
 
 4. How does destructuring assignment work in ES6?
    Ans:- Destructuring in ES6 lets you unpack values from arrays or properties from objects into separate variables easily.
 
 5. Explain template literals in ES6. How are they different from string concatenation?
    Ans:- Template literals in ES6 are strings written with backticks (`) that allow embedded expressions using ${ }.
-   Difference from string concatenation: - Easier syntax (no + needed). - Support multiline strings directly. - Allow expression interpolation inside ${ }.
+   Difference from string concatenation:
+   - Easier syntax (no + needed).
+   - Support multiline strings directly.
+   - Allow expression interpolation inside ${ }.
