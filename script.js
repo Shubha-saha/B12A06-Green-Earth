@@ -20,7 +20,7 @@ const displayAllPlants = (plants) => {
           <button class="bg-green-300 rounded-full px-4">${plant.category}</button>
           <h4>tk: ${plant.price}</h4>
         </div>
-        <button class="bg-green-700 text-white w-full rounded-full mt-2 px-4 py-1">
+        <button class="cartBtn bg-green-700 text-white w-full rounded-full mt-2 px-4 py-1">
           Add to Cart
         </button>
       </div>
@@ -108,7 +108,7 @@ const displayLevelPlant = (plants) => {
           <button class="bg-green-300 rounded-full px-4">${plant.category}</button>
           <h4>tk: ${plant.price}</h4>
         </div>
-        <button class="bg-green-700 text-white w-full rounded-full mt-2 px-4 py-1">
+        <button class="cartBtn bg-green-700 text-white w-full rounded-full mt-2 px-4 py-1">
           Add to Cart
         </button>
       </div>
