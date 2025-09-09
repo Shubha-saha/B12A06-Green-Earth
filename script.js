@@ -1,3 +1,44 @@
+const loadAllPlants = () => {
+  const url = "https://openapi.programming-hero.com/api/plants";
+  fetch(url)
+    .then((res) => res.json())
+    .then((json) => displayAllPlants(json.plants));
+};
+
+const displayAllPlants = (plants) => {
+  const cardContainer = document.getElementById("card-container");
+  cardContainer.innerHTML = "";
+
+  plants.forEach((plant) => {
+    const card = document.createElement("div");
+    card.innerHTML = `
+      <div class="bg-white rounded-lg p-4 space-y-2">
+        <img class="w-[300px] h-[150px] rounded-tl-lg rounded-tr-lg" src="${plant.image}" alt="" />
+        <h3 onclick="loadPlantDetail(${plant.id})" class="text-xl font-bold">${plant.name}</h3>
+        <p class="line-clamp-3">${plant.description}</p>
+        <div class="flex justify-between">
+          <button class="bg-green-300 rounded-full px-4">${plant.category}</button>
+          <h4>tk: ${plant.price}</h4>
+        </div>
+        <button class="bg-green-700 text-white w-full rounded-full mt-2 px-4 py-1">
+          Add to Cart
+        </button>
+      </div>
+    `;
+    cardContainer.append(card);
+  });
+};
+
+const manageSpinner = (status) => {
+  if (status == true) {
+    document.getElementById("spinner").classList.remove("hidden");
+    document.getElementById("card-container").classList.add("hidden");
+  } else {
+    document.getElementById("card-container").classList.remove("hidden");
+    document.getElementById("spinner").classList.add("hidden");
+  }
+};
+
 const loadCategories = () => {
   const url = "https://openapi.programming-hero.com/api/categories";
   fetch(url)
@@ -12,6 +53,7 @@ const removeActive = () => {
 };
 
 const loadLevelPlant = (id) => {
+  manageSpinner(true);
   const url = `https://openapi.programming-hero.com/api/category/${id}`;
   fetch(url)
     .then((res) => res.json())
@@ -73,6 +115,7 @@ const displayLevelPlant = (plants) => {
     `;
     cardContainer.append(card);
   });
+  manageSpinner(false);
 };
 
 const displayCategories = (categories) => {
@@ -86,4 +129,5 @@ const displayCategories = (categories) => {
     levelCategories.append(liUl);
   }
 };
+loadAllPlants();
 loadCategories();

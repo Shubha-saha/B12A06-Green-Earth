@@ -64,16 +64,26 @@
 
     <!-- main area  -->
     <main>
-      <section class="flex justify-center items-center py-10 hidden">
-        <span class="loading loading-dots loading-xl"></span>
-      </section>
       <!-- choose categories area  -->
       <section class="mx-6 mt-10">
         <h2 class="font-bold text-2xl text-center mb-6">Choose Your Trees</h2>
         <div class="flex justify-between items-start">
           <div class="w-2/12">
             <h3 class="font-bold text-xl">Categories</h3>
+            <button
+              onclick="loadAllPlants()"
+              id="all-plants"
+              class="plant-name cursor-pointer mt-2 px-1"
+            >
+              All Plants
+            </button>
             <div id="level-categories"></div>
+          </div>
+          <div
+            id="spinner"
+            class="flex justify-center items-center py-10 hidden"
+          >
+            <span class="loading loading-dots loading-xl"></span>
           </div>
           <div
             id="card-container"
