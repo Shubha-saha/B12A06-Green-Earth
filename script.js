@@ -24,13 +24,32 @@ const loadLevelPlant = (id) => {
     });
 };
 
-// category: "Medicinal Tree"
-// description: "A small to medium tree producing fruits rich in Vitamin C and antioxidants. Its fruits are used in Ayurvedic tonics for boosting immunity."
-// id:
-// 10
-// image: "https://i.ibb.co.com/50K7Cgv/amla-min.jpg"
-// name: "Amla Tree"
-// price: 550
+const loadPlantDetail = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/plant/${id}`;
+  console.log(url);
+  const res = await fetch(url);
+  const details = await res.json();
+  displayPlantDetail(details.plants);
+};
+
+const displayPlantDetail = (plant) => {
+  console.log(plant);
+  const detailsBox = document.getElementById("details-container");
+  detailsBox.innerHTML = `
+                <div class="rounded-lg">
+                  <h2 class="font-bold text-2xl mb-1">${plant.name}</h2>
+                  <img class="w-12/12 h-[180px] rounded-tl-lg rounded-tr-lg" src="${plant.image}" alt="" />
+                  <p>
+                    <span class="font-bold text-xl">Category:</span> ${plant.category}
+                  </p>
+                  <p><span class="font-bold text-xl">Price:</span> ${plant.price}</p>
+                  <p>
+                    <span class="font-bold text-xl">Description:</span> ${plant.description}
+                  </p>
+                </div>
+  `;
+  document.getElementById("plant_modal").showModal();
+};
 
 const displayLevelPlant = (plants) => {
   const cardContainer = document.getElementById("card-container");
@@ -41,8 +60,8 @@ const displayLevelPlant = (plants) => {
     card.innerHTML = `
       <div class="bg-white rounded-lg p-4 space-y-2">
         <img class="w-[300px] h-[150px] rounded-tl-lg rounded-tr-lg" src="${plant.image}" alt="" />
-        <h3 onclick="my_modal_5.showModal()" class="text-xl font-bold">${plant.name}</h3>
-        <p>${plant.description}</p>
+        <h3 onclick="loadPlantDetail(${plant.id})" class="text-xl font-bold">${plant.name}</h3>
+        <p class="line-clamp-3">${plant.description}</p>
         <div class="flex justify-between">
           <button class="bg-green-300 rounded-full px-4">${plant.category}</button>
           <h4>tk: ${plant.price}</h4>
